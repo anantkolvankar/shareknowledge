@@ -1,0 +1,87 @@
+<div id="masthead">  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>SK
+          <p class="lead">Make yourself feel good by sharing knowledge</p>
+        </h1>
+      </div>
+      <div class="col-md-5">
+        <div class="well well-lg"> 
+          <div class="row">
+            <div class="col-sm-12">
+              <div id="tag_cloud">
+                <i class="icon icon-tags"></i> Tags:- 
+                 <% tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class| %>
+                    <%= link_to tag.name, tag_path(tag.name), class: (params[:tag]==tag.name)? 'label label-warning': css_class %> | 
+                  <% end %>
+              </div>      
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div><!-- /cont -->
+  
+ 
+</div>
+
+<div class="container">
+<div class="row">
+    
+    <div class="col-md-12"> 
+      
+      <div class="panel">
+        <div class="panel-body">
+        <% @posts.each do |post| %>
+          
+          <!--/stories-->
+      <div class="row">    
+            <br>
+            <div class="col-md-2 col-sm-3 text-center">
+              <% if post.user.present? && !post.user.avatar.nil? %>
+              <%= image_tag post.user.avatar.url , :class => 'img-circle'%>
+              <% end %>
+            </div>
+            <div class="col-md-10 col-sm-9">
+              <h3><%= post.title %></h3>
+              <div class="row">
+                <div class="col-xs-9">
+                  <p><%= post.body %></p>
+                  <p class="lead"><button class="btn btn-default"><%= link_to 'Read More', post_path(post) %></button></p>
+                  <p class="pull-right">
+                    <% post.tag_list.each do |tag|%>
+                     <span class="label label-default">
+                      <%= tag %>
+                     </span> &nbsp;
+                    <% end %>
+                    
+                  </p>
+                  <ul class="list-inline">
+                    <li><%= time_ago_in_words(post.created_at) %></li>
+                    <li><%= post.comments.count %> Comments</li>
+                    <li><i class="fa fa-share"></i> <%= pluralize(post.votes_for,' Like') %></li>
+                    <span id="post_like"></span>
+                    
+                  </ul>
+                  </div>
+                
+              </div>
+              <br><br>
+            </div>
+            </div>
+            <hr>
+            <% end %>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    
+
+         
+
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>

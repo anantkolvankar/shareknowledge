@@ -1,0 +1,1 @@
+ $('#like').html( '<%= link_to("", unlike_path(@post.id), :remote => true, class: "icon-thumbs-up") %> <span><%= @post.votes_for %></span>' );

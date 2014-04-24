@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+      
+    <div class="col-md-9"> 
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <h3><%= @post.title %></h3>
+      </p>
+
+      <p>
+        <%= @post.body %>
+      </p>
+      <span  id="like">
+       <% if !@post.voted_by?(current_user) %>
+                    <%= link_to("", like_path(@post.id), :remote => true, class: "icon icon-thumbs-up-alt") %>
+                    <span id="post_like"><%= @post.votes_for %></span>
+                  <% else %>
+                    <%= link_to("", unlike_path(@post.id), :remote => true) %>
+                    <span class="icon-thumbs-up" id="post_like"><%= @post.votes_for %></span>
+                  <% end %>
+      </span>
+      <% if current_user.id == @post.user.id %>
+      <%= link_to 'Edit', edit_post_path(@post) %> |
+      <%= link_to 'Back', posts_path %>
+      <% end %>
+
+      <h2>Comments</h2>
+       <div id="comments">
+               <%= render :partial => @post.comments %>
+       </div>
+       <%= form_for [@post, Comment.new] do |f| %>
+              <p>
+                      <%= f.label :body, "New comment" %><br/>
+                      <%= f.text_area :body %>
+              </p>
+              <p><%= f.submit "Add comment" %></p>
+      <% end %>
+    </div>
+  </div>
