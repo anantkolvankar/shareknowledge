@@ -1,0 +1,32 @@
+ <br>
+<div class="col-md-4">
+ <div id="sidebar" class=" col col-sm-3 affix">
+   <ul class="nav nav-tabs" id="myTab">
+     <li class="active"><a href="#home">Ruby Weekly</a></li>
+     <li><a href="#profile">Recent posts</a></li>
+   </ul>    
+   <div class="tab-content">
+     <div class="tab-pane active" id="home">Popular posts</div>
+     <div class="tab-pane" id="profile">Recent posts</div>
+   </div>
+
+   <ul class="nav nav-tabs" id="myTab">
+     <li class="active"><a href="#home">Popular posts</a></li>
+     <li><a href="#profile">Recent posts</a></li>
+   </ul>    
+    <div class="tab-content">
+     <div class="tab-pane active" id="home">Popular posts</div>
+     <div class="tab-pane" id="profile">Recent posts</div>
+    </div>
+ </div>
+
+</div>
+
+            <script>
+            $(function () {
+                $('#myTab a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+            })
+            })
+            </script>

@@ -1,4 +1,8 @@
 Knowledge::Application.routes.draw do
+  resources :notes
+
+  resources :projects
+
   resources :categories
 
   resources :comments
@@ -20,6 +24,7 @@ Knowledge::Application.routes.draw do
 
   get '/post/like/:id' => "posts#like_video", as: :like
   get '/post/unlike/:id' => "posts#unlike_video", as: :unlike
+  get '/dashboard/:id' => "projects#dashboard", as: :dashboard
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

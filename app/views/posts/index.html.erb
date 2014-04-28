@@ -1,53 +1,7 @@
-<div id="masthead">  
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7">
-        <h1>SK
-          <p class="lead">Make yourself feel good by sharing knowledge</p>
-        </h1>
-      </div>
-      <div class="col-md-5">
-        <div class="well well-lg"> 
-          <div class="row">
-            <div class="col-sm-12">
-              <div id="tag_cloud">
-                <i class="icon icon-tags"></i> Tags:- 
-                 <% tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class| %>
-                    <%= link_to tag.name, tag_path(tag.name), class: (params[:tag]==tag.name)? 'label label-warning': css_class %> | 
-                  <% end %>
-              </div>      
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> 
-  </div><!-- /cont -->
-  
- 
-</div>
-
+<br>
 <div class="container">
 <div class="row">
-    <div class="col-md-4">
-     <div id="sidebar" class=" col col-sm-3 affix">
-          <div class="panel panel-default">
-                  <div class="panel-heading"><h4>Categories</h4></div>
-                    <div class="panel-body">
-                      <div class="list-group">
-                        <ul class="nav nav-stacked" >
-                           <% Category.all.each do |category| %>
-                            <li class= '<%=(params[:category_id].to_i == category.id )? 'active': 'a' %>'>
-                              <%= link_to category.name, posts_path(:category_id => category.id) %>
-                            </li>
-                          
-                            <% end %>
-                        </ul>
-                     </div>
-                    </div>
-                  </div>
-          </div>
-
-    </div>
+    <%= render 'layouts/popular_recent_sidebar' %>
     <div class="col-md-8"> 
       
       <div class="panel">
@@ -67,7 +21,7 @@
                   <div class="row">
                     <div class="col-xs-9">
                       <p><%= replace_smilies(post.body) %></p>
-                      <p class="lead"><button class="btn btn-default"><%= link_to 'Read More', post_path(post) %></button></p>
+                      <p ><%= link_to 'Read More', post_path(post),class: "btn btn-default" %></p>
                       <p class="pull-right">
                         <% post.tag_list.each do |tag|%>
                          <span class="label label-default">
@@ -93,6 +47,7 @@
         <% end %>
         <%= will_paginate @posts %>
         </div>
+        <%= link_to 'New Post', new_post_path %>
     </div>
     </div>
 
@@ -104,4 +59,4 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+

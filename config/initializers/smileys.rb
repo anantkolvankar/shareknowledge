@@ -3,9 +3,9 @@ module SmileyHelpers
   def self.regex
     return @regex if defined?(@regex)
 
-    before_and_after = "[.,;:!\\?\\(\\[\\{\\)\\]\\}\\-]|\\s"
+    before_and_after = "[.,;:!\\?\\(\\[\\{\\)\\]\\}\\-]|\s"
     @regex = Regexp.compile("(^|#{before_and_after})(" +
-            smilies.keys.map { |token| Regexp.escape(token) }.join("|") +
+            smilies.keys.map { |token| Regexp.union(token) }.join("|") +
             ")($|#{before_and_after})", Regexp::MULTILINE)
   end
 
@@ -23,19 +23,17 @@ module SmileyHelpers
 
   def self.replace_smilies(str, animate=false)
     str = str.to_str
-    before_and_after = "[.,;:!\\?\\(\\[\\{\\)\\]\\}\\-]|\\s"
+    before_and_after = "[.,;:!\\?\\(\\[\\{\\)\\]\\}\\-]|\s"
     i=0
     count=str.count(before_and_after)
-    while i< count do
-      i+=1
+   
     str = str.gsub(self.regex) do
       if animate
         %(#{$1}<span class="smilies animate#{self.smilies[$2]}" title="#{$2}">&nbsp;</span>#{$3})
       else
         %(#{$1}<span class="smilies #{self.smilies[$2]}" title="#{$2}">&nbsp;</span>#{$3})
       end
-    end
-    binding.pry
+   
   end
     str.respond_to?(:html_safe) ? str.html_safe : str
   end

@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<%= render 'projects_sidebar' %>
+		</div>
+		<div class="col-md-8">
+			<p id="notice"><%= notice %></p>
+
+			<p>
+			  <h2><%= @project.name %></h2>
+			  
+			</p>
+
+			<p>
+			  <strong> <%= @project.description %></strong>
+			 
+			</p>
+			<%= link_to 'Edit', edit_project_path(@project) %> |
+			<%= link_to 'Back', projects_path %>
+			<br>
+			<%= link_to 'Add Note', new_note_path(:project_id => @project.id) %>
+			<br>
+			<ul>
+			<% @project.notes.each do |note| %>
+				<li><%= note.title %><li>
+			<% end %>
+			<ul>
+		</div>
+	</div>
+</div>
