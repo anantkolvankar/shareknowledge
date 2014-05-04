@@ -1,5 +1,5 @@
 class AddAvatarToUser < ActiveRecord::Migration
   def change
-  	add_column :users, :avatar, :string
+  	add_attachment :users, :avatar
   end
 end

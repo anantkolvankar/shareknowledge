@@ -10,10 +10,11 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-  	puts "hi"
+  	puts params[:user][:avatar]
     super
   end
   def user_params
-      params.require(:user).permit(:email, :password_confirmation,:username, :password, :current_password,:first_name, :last_name, :organization, :user_type, :permission, :avatar, :is_admin,:profile)
+     devise_parameter_sanitizer.for(:account_update) { |u| u.permit! }
+   devise_parameter_sanitizer.for(:sign_up) { |u| u.permit! }
    end
 end
