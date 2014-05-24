@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	 
+
       <% if user_signed_in? %>
         <header class="navbar navbar-default navbar-fixed-top" role="banner">
           <div class="container">
@@ -40,7 +40,7 @@
                     <li>
                       <div id="tag_cloud">
                     <% tag_cloud Post.tag_counts, %w[badge] do |tag, css_class| %>
-                    
+
                     <%= link_to tag.name, tag_path(tag.name), class: (params[:tag]==tag.name)? 'label label-warning': 'label' %>
 
                   <% end %>
@@ -64,13 +64,21 @@
                   </ul>
                 </li>
               </ul>
-              <ul class="nav navbar-right navbar-nav">
 
-                <span class="navbar-text"><%= current_user.email %></span>
+
+              <ul class="nav navbar-right navbar-nav">
+                <li class= 'search'>
+                  <%= form_tag search_path, method: 'GET', class: 'navbar-form navbar-left' do %>
+                    <!-- <span class='icon icon-search pull-right'></span> -->
+                    <%= text_field_tag :search, nil, placeholder: 'Search', class: 'form-control col-lg-9'  %>
+                    <%= submit_tag 'Search' %>
+                  <% end %>
+                </li>
+
                 <li class="dropdown">
                    <a href="http://www.bootply.com/render/101499#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon icon-user center"></i></a>
                   <ul class="dropdown-menu" style="padding:12px;">
-                
+                    <li class="navbar-text"><%= current_user.email %></li>
                      <li><%= link_to(' Edit', edit_user_registration_path,:class =>'icon icon-pencil icon-fw') %></li>
                      <li> <%= link_to(' Logout', destroy_user_session_path, :method => :delete,:class =>'icon icon-power-off icon-fw') %></li>
                   </ul>

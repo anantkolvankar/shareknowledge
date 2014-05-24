@@ -1,0 +1,14 @@
+<h1>Search#Results</h1>
+<h2> Posts </h2>
+<ul>
+  <%- @results[:posts].each do |post|%>
+    <li><%= link_to post.title, post %></li>
+  <% end %>
+</ul>
+
+<h2> Projects </h2>
+<ul>
+  <%- @results[:projects].each do |project|%>
+    <li><%= link_to project.name, project %></li>
+  <% end %>
+</ul>
