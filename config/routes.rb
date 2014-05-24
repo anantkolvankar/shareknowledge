@@ -21,7 +21,7 @@ Knowledge::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'posts#index'
   get 'tags/:tag', to: 'posts#index', as: :tag
-
+  get 'user_profile' =>"posts#user_profile",as: :user_profile
   get '/post/like/:id' => "posts#like_video", as: :like
   get '/post/unlike/:id' => "posts#unlike_video", as: :unlike
   get '/dashboard/:id' => "projects#dashboard", as: :dashboard
