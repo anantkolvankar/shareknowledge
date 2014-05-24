@@ -1,0 +1,19 @@
+<% if @users.blank? %>
+  There are no Users to share project with.
+<% else %>
+  <div>
+    <%= form_for @projects_user do |f| %>
+
+      <br>
+      Share Project <b><%= @project.name %> with :</b>
+      <br><br>
+      <div>
+      <%= select_tag 'projects_user[user_ids][]', options_for_select(user_options), multiple: true %>
+      <%= f.hidden_field :project_id %>
+      </div>
+      <br>
+      <div><%= f.submit 'Save' %></div>
+
+    <% end %>
+  </div>
+<% end %>
