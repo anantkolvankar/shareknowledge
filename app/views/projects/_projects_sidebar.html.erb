@@ -8,10 +8,16 @@
     <div class="tab-content">
     <div class="tab-pane active" id="home">
       <ul>
-      <% current_user.projects.each do |project| %>
-        <li><%= project.name %></li>
-      <% end %>
-    </ul>
+        <% current_user.my_projects.each do |project| %>
+          <li><%= project.name %></li>
+        <% end %>
+      </ul>
+      <hr>
+      <ul>
+        <% current_user.shared_projects.each do |project| %>
+          <li><%= project.name %></li>
+        <% end %>
+      </ul>
     </div>
     </div>
      
