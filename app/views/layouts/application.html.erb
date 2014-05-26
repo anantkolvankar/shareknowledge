@@ -78,8 +78,8 @@
                 <li class= 'search'>
                   <%= form_tag search_path, method: 'GET', class: 'navbar-form navbar-left' do %>
                     <!-- <span class='icon icon-search pull-right'></span> -->
-                    <%= text_field_tag :search, nil, placeholder: 'Search', class: 'form-control col-lg-9'  %>
-                    <%= submit_tag 'Search' %>
+                    <%= text_field_tag :search, nil, placeholder: 'Search', class: 'form-control col-lg-9' %>
+                    &nbsp;<%= submit_tag 'Search',class: 'btn'%>
                   <% end %>
                 </li>
 

@@ -7,7 +7,7 @@ class SearchController < ApplicationController
     def search
       query = "%#{params[:search]}%"
       @results = {}
-      @results[:posts] = Post.where('title LIKE ? or body LIKE ?', query, query)
-      @results[:projects] = Project.where('name LIKE ?  or description LIKE ?', query, query)
+      @results[:posts] = Post.where('title ILIKE ? or body ILIKE ?', query, query)
+      @results[:projects] = Project.where('name ILIKE ?  or description ILIKE ?', query, query)
     end
 end

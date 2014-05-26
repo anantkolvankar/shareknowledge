@@ -12,12 +12,16 @@
   <div class="col-lg-4">
     <div class="bs-component">
       <ul class="list-group">
-          <% @user.projects.each do |project| %>
-          <li class="list-group-item">
-            <span class="badge"><%= project.notes.count %></span>
-            <p><%= project.name %></p>
-          </li>
+        <% if !@user.my_projects.count %>
+          <% @user.my_projects.each do |project| %>
+            <li class="list-group-item">
+              <span class="badge"><%= project.notes.count %></span>
+              <p><%= project.name %></p>
+            </li>
           <% end %>
+        <% else %>
+          <p>You have not created any project</p>
+        <% end %>
       </ul>
     </div>
   </div>

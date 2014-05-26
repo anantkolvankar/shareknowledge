@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
- <%= f.select :category_id, Category.all.collect {|p| [ p.name, p.id ] } , prompt: 'Select Category' %>
+ <%= f.select :category_id, Category.order('name').collect {|p| [ p.name, p.id ] } , prompt: 'Select Category' %>
  <div class="field">
   <%= f.label :tag_list, "Tags (separated by commas)" %><br />
   <%= f.text_field :tag_list %>

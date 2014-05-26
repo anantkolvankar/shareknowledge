@@ -113,6 +113,10 @@ a,a:hover {
   padding:6px;
   color:#fff;
 }
+
+button, input, optgroup, select, textarea {
+  color: #000 !important;
+}
     
 .btn-twitter {background-color:#4099FF;color:#fff;}
 .btn-facebook {background-color:#3B5998;color:#fff;}
