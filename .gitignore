@@ -1,0 +1,7 @@
+/shareknowledge.sublime-workspace
+/tmp
+/public/assets
+/config/database.yml
+/log/*.log
+.rvmrc
+/.bundle
