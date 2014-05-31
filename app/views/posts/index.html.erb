@@ -45,7 +45,10 @@
           </div>
         <hr>
         <% end %>
-        <%= will_paginate @posts %>
+        <div class="apple_pagination">
+          <%= will_paginate @posts, :container => false %>
+        </div>
+        <%#= will_paginate @posts %>
         </div>
         <%= link_to 'New Post', new_post_path %>
     </div>
