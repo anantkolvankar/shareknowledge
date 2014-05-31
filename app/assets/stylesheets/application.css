@@ -117,7 +117,28 @@ a,a:hover {
 button, input, optgroup, select, textarea {
   color: #000 !important;
 }
-    
+.dropdown-menu>li>a {
+  color: #428bca !important;
+}
+.navbar{
+  background: #428bca !important;
+}
+.navbar-nav>li>a {
+  color: #fff !important;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+  background: #2F74BE !important;
+ }
+ .navbar-inverse {
+  border-color: #fff !important;
+ }
+ .navbar-inverse .navbar-brand {
+    color: #fff !important;
+  }
+  .home_page{
+    background-color: #428bca !important;
+    color: #fff !important;
+  }
 .btn-twitter {background-color:#4099FF;color:#fff;}
 .btn-facebook {background-color:#3B5998;color:#fff;}
 .btn-google-plus {background-color:#d34836;color:#fff;}

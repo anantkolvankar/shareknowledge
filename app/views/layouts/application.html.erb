@@ -6,10 +6,10 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= !user_signed_in? ? 'home_page' : '' %>">
 
       <% if user_signed_in? %>
-        <header class="navbar navbar-default navbar-fixed-top" role="banner">
+        <header class="navbar navbar-inverse navbar-default navbar-fixed-top" role="banner">
           <div class="container">
             <div class="navbar-header">
               <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -34,33 +34,33 @@
                 </li>
               </ul>
               <ul class="nav navbar-nav">
-               <li class="dropdown">
+               <!-- <li class="dropdown">
                  <a href="#" class="dropdown-toggle icon-tags" data-toggle="dropdown"> Tags </a>
                   <ul class="dropdown-menu">
                     <li>
                       <div id="tag_cloud">
-                    <% tag_cloud Post.tag_counts, %w[badge] do |tag, css_class| %>
+                    <%# tag_cloud Post.tag_counts, %w[badge] do |tag, css_class| %>
 
-                    <%= link_to tag.name, tag_path(tag.name), class: (params[:tag]==tag.name)? 'label label-warning': 'label' %>
+                    <%#= link_to tag.name, tag_path(tag.name), class: (params[:tag]==tag.name)? 'label label-warning': 'label' %>
 
-                  <% end %>
+                  <%# end %>
                 </div>
                    </li>
                   </ul>
-                </li>
+                </li> -->
               </ul>
               <ul class="nav navbar-nav">
                <li class="dropdown">
-                 <a href="#" class="dropdown-toggle icon-briefcase" data-toggle="dropdown"> Projects </a>
+                 <a href="#" class="dropdown-toggle icon-briefcase" data-toggle="dropdown"> Projects <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    My Projects
+                    <li style='padding: 8px;'>My Projects</li>
                     <% current_user.my_projects.each do |project| %>
                       <li>
                       <%= link_to project.name, dashboard_path(:id => project.id) %>
                       </li>
                     <% end %>
                     <li class="divider"></li>
-                    Shared with me
+                    <li style='padding: 8px;'>Shared with me</li>
                     <% current_user.shared_projects.each do |project| %>
                       <li>
                       <%= link_to project.name, dashboard_path(:id => project.id) %>
@@ -77,16 +77,17 @@
               <ul class="nav navbar-right navbar-nav">
                 <li class= 'search'>
                   <%= form_tag search_path, method: 'GET', class: 'navbar-form navbar-left' do %>
-                    <!-- <span class='icon icon-search pull-right'></span> -->
+                    
                     <%= text_field_tag :search, nil, placeholder: 'Search', class: 'form-control col-lg-9' %>
-                    &nbsp;<%= submit_tag 'Search',class: 'btn'%>
+                    &nbsp;<%#= submit_tag 'Search',class: 'btn'%>
                   <% end %>
                 </li>
 
                 <li class="dropdown">
-                   <a href="http://www.bootply.com/render/101499#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon icon-user center"></i></a>
+                   <a href="http://www.bootply.com/render/101499#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon icon-user center">
+                    <%= current_user.first_name %><span class="caret"></span></i></a>
                   <ul class="dropdown-menu" style="padding:12px;">
-                    <li class="navbar-text"><%= current_user.email %></li>
+                    <!-- <li class="navbar-text"><%= current_user.email %></li> -->
                      <li><%= link_to(' Edit', edit_user_registration_path,:class =>'icon icon-pencil icon-fw') %></li>
                      <li> <%= link_to(' Logout', destroy_user_session_path, :method => :delete,:class =>'icon icon-power-off icon-fw') %></li>
                   </ul>
