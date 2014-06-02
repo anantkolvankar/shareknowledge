@@ -14,7 +14,12 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
+    @project = Project.find_by_id(params[:project_id])
+    @note = @project.notes.new
+    respond_to do |format|
+      format.html
+      format.js { render layout: false}
+    end
   end
 
   # GET /notes/1/edit
@@ -28,7 +33,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        format.html { redirect_to dashboard_url(:id => @note.project_id), notice: 'Note was successfully created.' }
         format.json { render action: 'show', status: :created, location: @note }
       else
         format.html { render action: 'new' }

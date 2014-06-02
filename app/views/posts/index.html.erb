@@ -1,7 +1,7 @@
 <br>
 <div class="container">
 <div class="row">
-    <%= render 'layouts/popular_recent_sidebar' %>
+    
     <div class="col-md-8"> 
       
       <div class="panel">
@@ -13,7 +13,7 @@
                 <br>
                 <div class="col-md-2 col-sm-3 text-center">
                   <% if post.user.present? && !post.user.avatar.nil? %>
-                    <%= image_tag post.user.avatar.url(:thumb) , :class => 'img-circle'%>
+                    <%= link_to image_tag(post.user.avatar.url(:thumb)),user_profile_path(user_id:post.user.id) , :class => 'img-circle'%>
                   <% end %>
                 </div>
                 <div class="col-md-10 col-sm-9">
@@ -21,7 +21,7 @@
                   <div class="row">
                     <div class="col-xs-9">
                       <p><%= replace_smilies(post.body) %></p>
-                      <p ><%= link_to 'Read More', post_path(post),class: "btn btn-default" %></p>
+                      <p ><%= link_to 'Read More', post_path(post),class: "btn btn-default",'data-no-turbolink' => true %></p>
                       <p class="pull-right">
                         <% post.tag_list.each do |tag|%>
                          <span class="label label-default">
@@ -45,12 +45,15 @@
           </div>
         <hr>
         <% end %>
-        <%= will_paginate @posts %>
+        <div class="apple_pagination">
+          <%= will_paginate @posts, :container => false %>
+        </div>
+        <%#= will_paginate @posts %>
         </div>
         <%= link_to 'New Post', new_post_path %>
     </div>
     </div>
-
+    <%= render 'layouts/popular_recent_sidebar' %>
     </div>
     
 

@@ -1,0 +1,39 @@
+<br>
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <%= image_tag(@user.avatar.url(:medium)) %>
+    <h5><%= @user.email %></h5>
+    <h5>Joined <i><%= time_ago_in_words(@user.created_at) %> ago</i></h5>
+  </div>
+</div>
+<h5>My Projects</h5>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <ul class="list-group">
+        <% if !@user.my_projects.count %>
+          <% @user.my_projects.each do |project| %>
+            <li class="list-group-item">
+              <span class="badge"><%= project.notes.count %></span>
+              <p><%= project.name %></p>
+            </li>
+          <% end %>
+        <% else %>
+          <p>You have not created any project</p>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+
+     
+
+
+<br>
+
+

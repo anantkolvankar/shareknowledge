@@ -113,7 +113,60 @@ a,a:hover {
   padding:6px;
   color:#fff;
 }
-    
+
+button, input, optgroup, select, textarea {
+  color: #000 !important;
+}
+.dropdown-menu>li>a {
+  color: #428bca !important;
+}
+.navbar{
+  background: #428bca !important;
+}
+.navbar-nav>li>a {
+  color: #fff !important;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+  background: #2F74BE !important;
+ }
+ .navbar-inverse {
+  border-color: #fff !important;
+ }
+ .navbar-inverse .navbar-brand {
+    color: #fff !important;
+  }
+  .home_page{
+    background-color: #428bca !important;
+    color: #fff !important;
+  }
+
+  .apple_pagination {
+  background: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  padding: 1em;
+  cursor: default; }
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; }
+  .apple_pagination .disabled {
+    color: #aaaaaa; }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #bebebe;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+  .apple_pagination a {
+    text-decoration: none;
+    color: black; }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; }
 .btn-twitter {background-color:#4099FF;color:#fff;}
 .btn-facebook {background-color:#3B5998;color:#fff;}
 .btn-google-plus {background-color:#d34836;color:#fff;}
@@ -121,10 +174,7 @@ a,a:hover {
 .btn-twitter:hover {background-color:#3088FF;color:#62BBFF;}
 .btn-facebook:hover {background-color:#2A4998;color:#4C6BBA;}
 .btn-google-plus:hover {background-color:#C23836;color:#E45A58;}
-a, a:hover {
-color: #223344 !important;
-text-decoration: none;
-}
+
 /*
  *= require font-awesome
  */
