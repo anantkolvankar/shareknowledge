@@ -35,12 +35,15 @@ group :development do
   gem 'pry'
 end
 gem 'devise'
+gem 'simple_form', github: 'plataformatec/simple_form', branch: 'bootstrap-3'
 gem "font-awesome-rails"
 gem 'acts-as-taggable-on'
 gem 'thumbs_up'
 gem 'will_paginate', '~> 3.0'
 gem 'nokogiri', '~>1.5.9'
 gem "paperclip", "~> 4.1"
+# gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails", github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

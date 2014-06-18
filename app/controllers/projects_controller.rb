@@ -15,6 +15,10 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    respond_to do |format|
+      format.html
+      format.js { render layout: false}
+    end
   end
 
   # GET /projects/1/edit
@@ -60,7 +64,7 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
- 
+
    def dashboard
 
    end

@@ -6,8 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= !user_signed_in? ? 'home_page' : '' %>">
-
+<body class="<%= !user_signed_in? ? 'home_page' : '' %> <%= controller_name %>">
       <% if user_signed_in? %>
         <header class="navbar navbar-inverse navbar-default navbar-fixed-top" role="banner">
           <div class="container">
@@ -67,7 +66,7 @@
                       </li>
                     <% end %>
                     <li class="divider"></li>
-                    <li><%= link_to "Create New Project", new_project_path -%></li>
+                    <li><%= link_to "Create New Project", new_project_path, remote: true -%></li>
                     <li><%= link_to "All Projects", projects_path -%></li>
                   </ul>
                 </li>
@@ -77,7 +76,6 @@
               <ul class="nav navbar-right navbar-nav">
                 <li class= 'search'>
                   <%= form_tag search_path, method: 'GET', class: 'navbar-form navbar-left' do %>
-                    
                     <%= text_field_tag :search, nil, placeholder: 'Search', class: 'form-control col-lg-9' %>
                     &nbsp;<%#= submit_tag 'Search',class: 'btn'%>
                   <% end %>
@@ -101,6 +99,8 @@
 <body>
 
 <%= yield %>
-<p class="pull-right">Built with <i class="icon-heart-empty"></i> in <a href="http://www.bootply.com/">Heaven</a></p>
+<p class="pull-right">Built with <i class="icon-heart-empty"></i> in <a href="#">Heaven</a></p>
+<%= modal_dialog do %>
+<% end %>
 </body>
 </html>
